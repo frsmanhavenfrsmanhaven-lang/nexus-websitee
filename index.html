@@ -1,1 +1,1180 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
 
+<script>
+    /* =========================
+       NEXUS WEBSITE CONFIG
+       ========================= */
+
+    const NEXUS_CONFIG = {
+        botInvite: "https://discord.com/oauth2/authorize?client_id=1556723020297543800&permissions=8&integration_type=0&scope=bot+applications.commands",
+        supportServer: "https://discord.gg/aBPYtcqnE"
+    };
+</script>
+
+<html lang="en">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Nexus — The only bot you need</title>
+    <meta name="description" content="Nexus is a powerful Discord bot built to make your server better.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #070914;
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .background {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background:
+                radial-gradient(circle at 15% 20%, rgba(80, 70, 255, 0.20), transparent 30%),
+                radial-gradient(circle at 85% 20%, rgba(150, 60, 255, 0.18), transparent 30%),
+                radial-gradient(circle at 50% 90%, rgba(40, 100, 255, 0.12), transparent 35%),
+                #070914;
+        }
+
+        .background::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        nav {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            backdrop-filter: blur(18px);
+            background: rgba(7, 9, 20, 0.78);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: auto;
+            height: 75px;
+            padding: 0 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .logo-box {
+            width: 38px;
+            height: 38px;
+            border-radius: 11px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #4169ff, #a13cff);
+            box-shadow: 0 0 25px rgba(100, 80, 255, 0.35);
+        }
+
+        .logo-box span {
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #a9afc4;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: white;
+        }
+
+        .nav-button {
+            padding: 10px 18px;
+            border-radius: 9px;
+            background: linear-gradient(135deg, #4d6bff, #914cff);
+            color: white !important;
+            font-weight: 700;
+        }
+
+        .hero {
+            min-height: 100vh;
+            max-width: 1200px;
+            margin: auto;
+            padding: 170px 25px 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .badge {
+            display: inline-flex;
+            padding: 8px 14px;
+            border: 1px solid rgba(120,110,255,0.3);
+            background: rgba(90,80,255,0.08);
+            border-radius: 999px;
+            color: #aeb4ff;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 8vw, 92px);
+            line-height: 0.95;
+            letter-spacing: -4px;
+            margin-bottom: 28px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #5d7cff, #a64dff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: #a8aec1;
+            font-size: 19px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            padding: 14px 22px;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-primary {
+            background: linear-gradient(135deg, #4d6bff, #914cff);
+            box-shadow: 0 10px 35px rgba(90,80,255,0.2);
+        }
+
+        .button-secondary {
+            border: 1px solid rgba(255,255,255,0.12);
+            background: rgba(255,255,255,0.035);
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero-card {
+            width: 360px;
+            min-width: 300px;
+            padding: 28px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.09);
+            background: rgba(255,255,255,0.035);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+        }
+
+        .hero-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .status {
+            color: #67e6a3;
+            font-size: 12px;
+        }
+
+        .hero-card h3 {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .hero-card p {
+            font-size: 14px;
+            color: #9198ad;
+        }
+
+        .mini-stat {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .mini-stat:last-child {
+            border-bottom: none;
+        }
+
+        .mini-stat span:first-child {
+            color: #9097ad;
+        }
+
+        section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 100px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 700px;
+            margin: auto auto 55px;
+        }
+
+        .section-title h2 {
+            font-size: 43px;
+            margin-bottom: 14px;
+        }
+
+        .section-title p {
+            color: #9299ad;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .feature {
+            padding: 28px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.025);
+            border-radius: 16px;
+            transition: 0.25s;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            border-color: rgba(110,100,255,0.3);
+            background: rgba(100,90,255,0.05);
+        }
+
+        .feature-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #496cff, #964dff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .feature h3 {
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            color: #9097aa;
+            font-size: 14px;
+        }
+
+        .commands-container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .search {
+            width: 100%;
+            padding: 16px 18px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.035);
+            color: white;
+            outline: none;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .search:focus {
+            border-color: #6374ff;
+        }
+
+        .commands {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .command {
+            padding: 18px 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.07);
+            background: rgba(255,255,255,0.025);
+        }
+
+        .command-name {
+            color: #8d9bff;
+            font-weight: 800;
+            font-family: Consolas, monospace;
+            margin-bottom: 5px;
+        }
+
+        .command-description {
+            color: #8d94a8;
+            font-size: 13px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 50px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 14px;
+            background: rgba(255,255,255,0.025);
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 30px;
+            background: linear-gradient(90deg, #617bff, #a64dff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stat span {
+            color: #858ca0;
+            font-size: 13px;
+        }
+
+        .faq {
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .faq-item {
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.025);
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 0 20px 20px;
+            color: #9299ad;
+            font-size: 14px;
+        }
+
+        .cta {
+            text-align: center;
+            padding: 80px 30px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background:
+                radial-gradient(circle at center, rgba(85,75,255,0.15), transparent 60%),
+                rgba(255,255,255,0.025);
+        }
+
+        .cta h2 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #949bad;
+            margin-bottom: 30px;
+        }
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 35px 25px;
+            color: #777e92;
+            font-size: 13px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 850px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .hero-card {
+                width: 100%;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .commands {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            .section-title h2 {
+                font-size: 34px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .cta h2 {
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<nav>
+    <div class="nav-inner">
+
+        <a href="#" class="logo">
+            <div class="logo-box">
+                N
+            </div>
+            Nexus
+        </a>
+
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#commands">Commands</a>
+            <a href="#faq">FAQ</a>
+            <a href="YOUR_SUPPORT_SERVER" target="_blank">Support</a>
+            <a href="YOUR_BOT_INVITE" target="_blank" class="nav-button">
+                Add Nexus
+            </a>
+        </div>
+
+    </div>
+</nav>
+
+
+<main>
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                Powerful Discord Bot
+            </div>
+
+            <h1>
+                Meet <span class="gradient-text">Nexus.</span>
+            </h1>
+
+            <p>
+                The only Discord bot you need. Powerful moderation,
+                useful utilities, server management and much more,
+                all packed into one fast and reliable bot.
+            </p>
+
+            <div class="buttons">
+
+                <a href="YOUR_BOT_INVITE"
+                   target="_blank"
+                   class="button button-primary">
+                    Add Nexus
+                </a>
+
+                <a href="#commands"
+                   class="button button-secondary">
+                    View Commands
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-card">
+
+            <div class="hero-card-top">
+                <strong>Nexus</strong>
+                <span class="status">● Online</span>
+            </div>
+
+            <h3>Your server. Upgraded.</h3>
+
+            <p>
+                Everything you need to manage and improve
+                your Discord server.
+            </p>
+
+            <div style="margin-top:25px;">
+
+                <div class="mini-stat">
+                    <span>Commands</span>
+                    <strong>30+</strong>
+                </div>
+
+                <div class="mini-stat">
+                    <span>Prefix</span>
+                    <strong>$</strong>
+                </div>
+
+                <div class="mini-stat">
+                    <span>Availability</span>
+                    <strong>24/7</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="features">
+
+        <div class="section-title">
+
+            <h2>
+                Everything you need.
+            </h2>
+
+            <p>
+                Nexus gives your server powerful tools without
+                making things complicated.
+            </p>
+
+        </div>
+
+
+        <div class="features">
+
+            <div class="feature">
+
+                <div class="feature-icon">M</div>
+
+                <h3>Powerful Moderation</h3>
+
+                <p>
+                    Keep your community safe with warnings,
+                    kicks, bans, timeouts, lockdowns and more.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">C</div>
+
+                <h3>Easy Configuration</h3>
+
+                <p>
+                    Configure Nexus to work exactly how
+                    your server needs it.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">T</div>
+
+                <h3>Ticket System</h3>
+
+                <p>
+                    Give your members an easy way to contact
+                    your staff team.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">S</div>
+
+                <h3>Server Tools</h3>
+
+                <p>
+                    Get useful server information, user
+                    information and management tools.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">F</div>
+
+                <h3>Fast & Reliable</h3>
+
+                <p>
+                    Nexus is designed to be fast, simple
+                    and reliable.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">A</div>
+
+                <h3>Always Improving</h3>
+
+                <p>
+                    New features, improvements and commands
+                    are continuously added.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="commands">
+
+        <div class="section-title">
+
+            <h2>
+                Nexus Commands
+            </h2>
+
+            <p>
+                Explore the commands available with Nexus.
+            </p>
+
+        </div>
+
+
+        <div class="commands-container">
+
+            <input
+                type="text"
+                id="commandSearch"
+                class="search"
+                placeholder="Search commands..."
+            >
+
+
+            <div class="commands" id="commandsList">
+
+                <div class="command">
+                    <div class="command-name">$help</div>
+                    <div class="command-description">
+                        Shows the Nexus help menu.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$ping</div>
+                    <div class="command-description">
+                        Check Nexus latency.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$botinfo</div>
+                    <div class="command-description">
+                        Shows information about Nexus.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$serverinfo</div>
+                    <div class="command-description">
+                        Shows information about the server.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$userinfo</div>
+                    <div class="command-description">
+                        Shows information about a user.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$avatar</div>
+                    <div class="command-description">
+                        Shows a user's avatar.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$clear</div>
+                    <div class="command-description">
+                        Deletes messages from a channel.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$kick</div>
+                    <div class="command-description">
+                        Kicks a member from the server.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$ban</div>
+                    <div class="command-description">
+                        Bans a member from the server.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$unban</div>
+                    <div class="command-description">
+                        Unbans a member.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$timeout</div>
+                    <div class="command-description">
+                        Times out a member.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$untimeout</div>
+                    <div class="command-description">
+                        Removes a member's timeout.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$warn</div>
+                    <div class="command-description">
+                        Warns a member.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$warnings</div>
+                    <div class="command-description">
+                        Shows a member's warnings.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$lock</div>
+                    <div class="command-description">
+                        Locks a channel.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$unlock</div>
+                    <div class="command-description">
+                        Unlocks a channel.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$slowmode</div>
+                    <div class="command-description">
+                        Changes channel slowmode.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$announce</div>
+                    <div class="command-description">
+                        Creates an announcement.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$poll</div>
+                    <div class="command-description">
+                        Creates a poll.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$embed</div>
+                    <div class="command-description">
+                        Creates an embed message.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$say</div>
+                    <div class="command-description">
+                        Makes Nexus send a message.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$afk</div>
+                    <div class="command-description">
+                        Set your AFK status.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$ticket</div>
+                    <div class="command-description">
+                        Opens the ticket system.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$close</div>
+                    <div class="command-description">
+                        Closes a ticket.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$add</div>
+                    <div class="command-description">
+                        Adds a member to a ticket.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$remove</div>
+                    <div class="command-description">
+                        Removes a member from a ticket.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$setup</div>
+                    <div class="command-description">
+                        Sets up Nexus features.
+                    </div>
+                </div>
+
+                <div class="command">
+                    <div class="command-name">$config</div>
+                    <div class="command-description">
+                        Configure Nexus.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <div class="stats">
+
+            <div class="stat">
+                <strong>30+</strong>
+                <span>Commands</span>
+            </div>
+
+            <div class="stat">
+                <strong>24/7</strong>
+                <span>Availability</span>
+            </div>
+
+            <div class="stat">
+                <strong>1</strong>
+                <span>Powerful Bot</span>
+            </div>
+
+            <div class="stat">
+                <strong>∞</strong>
+                <span>Possibilities</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section id="faq">
+
+        <div class="section-title">
+
+            <h2>
+                Frequently Asked Questions
+            </h2>
+
+            <p>
+                Everything you need to know about Nexus.
+            </p>
+
+        </div>
+
+
+        <div class="faq">
+
+            <div class="faq-item">
+
+                <div class="faq-question">
+                    What is Nexus?
+                    <span>+</span>
+                </div>
+
+                <div class="faq-answer">
+                    Nexus is a multipurpose Discord bot designed
+                    to provide moderation, utility, server management
+                    and community features.
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <div class="faq-question">
+                    What prefix does Nexus use?
+                    <span>+</span>
+                </div>
+
+                <div class="faq-answer">
+                    Nexus currently uses the $ prefix.
+                    For example: $help
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <div class="faq-question">
+                    Is Nexus free?
+                    <span>+</span>
+                </div>
+
+                <div class="faq-answer">
+                    Nexus is designed to be available for Discord
+                    communities without complicated setup.
+                </div>
+
+            </div>
+
+
+            <div class="faq-item">
+
+                <div class="faq-question">
+                    Where can I get support?
+                    <span>+</span>
+                </div>
+
+                <div class="faq-answer">
+                    Join the Nexus support server using the
+                    Support button on this website.
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section>
+
+        <div class="cta">
+
+            <h2>
+                Ready for Nexus?
+            </h2>
+
+            <p>
+                Upgrade your Discord server today.
+            </p>
+
+            <div class="buttons" style="justify-content:center;">
+
+                <a href="YOUR_BOT_INVITE"
+                   target="_blank"
+                   class="button button-primary">
+                    Add Nexus
+                </a>
+
+                <a href="YOUR_SUPPORT_SERVER"
+                   target="_blank"
+                   class="button button-secondary">
+                    Join Support
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-inner">
+
+        <div>
+            © 2026 Nexus. All rights reserved.
+        </div>
+
+        <div>
+            Built for Discord communities.
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+    // COMMAND SEARCH
+
+    const search = document.getElementById("commandSearch");
+    const commandCards = document.querySelectorAll(".command");
+
+    search.addEventListener("input", function () {
+
+        const value = search.value.toLowerCase();
+
+        commandCards.forEach(function (card) {
+
+            const text = card.textContent.toLowerCase();
+
+            if (text.includes(value)) {
+                card.style.display = "";
+            } else {
+                card.style.display = "none";
+            }
+
+        });
+
+    });
+
+
+    // FAQ
+
+    const questions = document.querySelectorAll(".faq-question");
+
+    questions.forEach(function (question) {
+
+        question.addEventListener("click", function () {
+
+            const answer = question.nextElementSibling;
+            const symbol = question.querySelector("span");
+
+            if (answer.style.display === "block") {
+
+                answer.style.display = "none";
+                symbol.textContent = "+";
+
+            } else {
+
+                answer.style.display = "block";
+                symbol.textContent = "−";
+
+            }
+
+        });
+
+    });
+
+</script>
+
+</body>
+</html>
